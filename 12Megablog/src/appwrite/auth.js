@@ -1,14 +1,18 @@
 import conf from '../conf.js';
 import { Client, Account, ID } from "appwrite";
 
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+export class AuthService{
+    client=new Client();
+    account;
 
-const account = new Account(client);
+    constructor(){
+        this.client
+            .setEndpoint(conf.appwriteUrl)
+            .setProject(conf.appwriteProjectId)
+        this.account=new Account(this.client)
 
-const user = await account.create(
-    ID.unique(), 
-    'email@example.com', 
-    'password'
-);
+    }
+}
+const authService= new AuthService();
+
+export default AuthService
