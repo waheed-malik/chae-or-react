@@ -53,6 +53,7 @@ export class AuthService {
         } catch (error) {
             console.log("Appwrite servic :: getCurrentUser :: error", error)
         }
+       
        }
 
 }
