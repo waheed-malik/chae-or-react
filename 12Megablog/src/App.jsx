@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import authService from './appwrite/auth'; // make sure this has a getCurrentUser() method
-import  {login, logout} from "./store/authSlice"
+import { login, logout } from "./store/authSlice";
 import './App.css';
 
 function App() {
@@ -13,9 +13,9 @@ function App() {
     authService.getCurrentUser()
       .then((userData) => {
         if (userData) {
-          dispatch({ type: "LOGIN", payload: userData }); // adjust action as per your setup
+          dispatch(login(userData)); // using the actual login action
         } else {
-          dispatch({ type: "LOGOUT" });
+          dispatch(logout());
         }
       })
       .catch((error) => {
@@ -26,14 +26,15 @@ function App() {
       });
   }, [dispatch]);
 
-  return !loading ? (
-    <div className='min-h'></div>
-  )
   if (loading) {
     return <h2>Loading...</h2>;
   }
 
- 
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <h1 className="text-2xl font-bold text-center mt-10">A blog app with Appwrite</h1>
+    </div>
+  );
 }
 
 export default App;
