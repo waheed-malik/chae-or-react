@@ -19,5 +19,6 @@ const authSlice=createSlice({
         }
     }
 })
-export const {login,logout}= authSlice.actions;
+export const login = (userData) => ({ type: 'LOGIN', payload: userData });
+export const logout = () => ({ type: 'LOGOUT' }); // یہ ہونا چاہیے
 export default authSlice.reducer

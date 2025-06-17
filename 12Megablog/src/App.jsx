@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import authService from './appwrite/auth'; // make sure this has a getCurrentUser() method
 import { login, logout } from "./store/authSlice";
 import './App.css';
-
+import Header from './components/Header/Header.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import { Outlet } from 'react-router-dom'
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
@@ -30,11 +32,17 @@ function App() {
     return <h2>Loading...</h2>;
   }
 
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold text-center mt-10">A blog app with Appwrite</h1>
+  return !loading ? (
+    <div className='min-h-screen flex felx-wrap content-between bg-gray-400'>
+      <div className='w-full block'>
+        <Header />
+        <main>
+          TODO <Outlet></Outlet>
+        </main>
+        <Footer></Footer>
+      </div>
     </div>
-  );
+  ) : null
 }
 
 export default App;
