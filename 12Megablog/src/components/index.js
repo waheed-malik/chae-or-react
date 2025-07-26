@@ -1,6 +1,6 @@
 import Header from "./Header/Header.jsx";
 import Footer from "./Footer/Footer.jsx";
-import Container from "./containe/Containerr";
+import Container from "./container/Container";
 import Logo from "./Logo.jsx";
 import LogoutBtn from "./Header/LogoutBtn.jsx";
 export{
